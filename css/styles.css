@@ -1,0 +1,1176 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, "Microsoft JhengHei", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #555;
+}
+
+.hidden {
+  display: none !important;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.brand-mark {
+  width: 28px;
+  height: 50px;
+  background: #f28a00;
+  border-radius: 2px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.brand-mark.small {
+  width: 27px;
+  height: 50px;
+}
+
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 5px;
+  width: 17px;
+  height: 17px;
+  border: 6px solid white;
+  border-top-color: #333;
+  border-radius: 50%;
+}
+
+.brand-text {
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: 1px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+/* =========================
+   登入頁
+========================= */
+
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  border: 5px solid #333;
+  background: #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      36deg,
+      transparent 0 36%,
+      rgba(75, 75, 75, 0.28) 36% 54%,
+      transparent 54%
+    ),
+    linear-gradient(
+      65deg,
+      transparent 0 60%,
+      rgba(176, 128, 70, 0.32) 60% 78%,
+      transparent 78%
+    );
+}
+
+.login-card {
+  width: 365px;
+  height: 492px;
+  background: #3f3f3f;
+  border-radius: 4px;
+  position: relative;
+  z-index: 2;
+  padding: 58px 50px;
+  text-align: center;
+}
+
+.login-avatar {
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  background: #676767;
+  margin: 0 auto 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-avatar::before {
+  content: "";
+  position: absolute;
+  width: 37px;
+  height: 37px;
+  background: #ddd;
+  border-radius: 50%;
+  left: 34px;
+  top: 27px;
+  box-shadow: 0 45px 0 23px #ddd;
+}
+
+.login-logo {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-bottom: 15px;
+}
+
+.login-field {
+  text-align: left;
+  margin: 12px 0 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #cfcfcf;
+}
+
+.login-field input {
+  width: 100%;
+  height: 25px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 999px;
+  background: #8b8585;
+  color: white;
+  padding: 0 12px;
+  outline: none;
+}
+
+.login-btn {
+  margin-top: 28px;
+  border: none;
+  border-radius: 999px;
+  background: #d8d8d8;
+  color: #444;
+  padding: 6px 28px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.login-error {
+  color: #ff9999;
+  margin-top: 14px;
+  font-size: 13px;
+}
+
+/* =========================
+   主系統
+========================= */
+
+.app-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  border: 4px solid #000;
+  background: #545454;
+}
+
+.app-page::before {
+  content: "";
+  position: absolute;
+  left: 178px;
+  top: 0;
+  width: 615px;
+  height: 103px;
+  background: #050505;
+  clip-path: polygon(0 0, 100% 0, 70% 100%, 30% 100%);
+  z-index: 1;
+}
+
+.app-page::after {
+  content: "";
+  position: absolute;
+  left: 515px;
+  top: 0;
+  width: 245px;
+  height: 150px;
+  background: #633600;
+  clip-path: polygon(0 0, 75% 0, 100% 100%, 35% 100%);
+  opacity: 0.9;
+  z-index: 1;
+}
+
+.top-logo {
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  width: 170px;
+  height: 60px;
+  background: #222;
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-left: 7px;
+}
+
+.top-search {
+  position: absolute;
+  left: 205px;
+  right: 190px;
+  top: 13px;
+  height: 32px;
+  background: #3a3a3a;
+  border-radius: 999px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  color: #ddd;
+  font-size: 23px;
+}
+
+.top-search input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  padding: 0 12px;
+  font-size: 16px;
+}
+
+.top-small-box {
+  position: absolute;
+  right: 93px;
+  top: 12px;
+  width: 84px;
+  height: 34px;
+  background: #3d3d3d;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.top-icons {
+  position: absolute;
+  right: 17px;
+  top: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 11;
+}
+
+.top-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #bcbcbc;
+  color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  border: 2px solid #555;
+}
+
+.profile-menu {
+  position: absolute;
+  right: 14px;
+  top: 55px;
+  width: 110px;
+  z-index: 20;
+  background: #454545;
+  color: #ddd;
+  border-radius: 5px;
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 2.5;
+}
+
+.profile-menu div {
+  cursor: pointer;
+}
+
+.left-tabs {
+  position: absolute;
+  left: 0;
+  top: 155px;
+  width: 48px;
+  z-index: 9;
+}
+
+.tab-piece {
+  width: 48px;
+  height: 31px;
+  background: #303030;
+  border: 1px solid #000;
+  clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
+  color: #d5d5d5;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  white-space: nowrap;
+}
+
+.tab-piece.active {
+  width: 150px;
+  background: #555;
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 0 100%);
+}
+
+.main-panel {
+  position: absolute;
+  left: 67px;
+  top: 91px;
+  width: 74%;
+  height: 448px;
+  background: #585858;
+  border: 5px solid #333;
+  border-radius: 10px;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.panel-head {
+  height: 43px;
+  background: #333;
+  padding: 13px 28px;
+}
+
+.inner-search {
+  width: 320px;
+  height: 13px;
+  line-height: 13px;
+  background: #555;
+  border-radius: 999px;
+  color: #ddd;
+  font-size: 12px;
+  padding-left: 10px;
+}
+
+.right-side {
+  position: absolute;
+  right: 8px;
+  top: 173px;
+  width: 176px;
+  height: 366px;
+  z-index: 5;
+}
+
+.notice-box {
+  height: 178px;
+  background: #aaa;
+  border: 4px solid #3b3b3b;
+  border-radius: 9px;
+  color: #000;
+  font-size: 38px;
+  font-weight: 900;
+  padding: 15px;
+  margin-bottom: 4px;
+}
+
+.right-dark-box {
+  height: 184px;
+  background: #3f3f3f;
+  border: 4px solid #3b3b3b;
+  border-radius: 8px;
+}
+
+/* =========================
+   首頁
+========================= */
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 6px;
+  height: 397px;
+  padding: 6px;
+}
+
+.home-box {
+  background: #aaa;
+  color: #050505;
+  border-radius: 5px;
+  padding: 12px;
+  font-size: 38px;
+  font-weight: 900;
+  position: relative;
+}
+
+.home-box p {
+  font-size: 24px;
+  margin-top: 32px;
+  cursor: pointer;
+}
+
+.home-right {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 6px;
+}
+
+/* =========================
+   使用者列表
+========================= */
+
+.list-toolbar {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  z-index: 15;
+  display: flex;
+  gap: 10px;
+}
+
+.pill-btn {
+  min-width: 102px;
+  height: 30px;
+  border-radius: 999px;
+  background: #d6d6d6;
+  color: #555;
+  font-size: 15px;
+  font-weight: 800;
+  border: none;
+  line-height: 16px;
+}
+
+.pill-green {
+  border: 7px solid #169000;
+}
+
+.pill-red {
+  border: 7px solid #d50000;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #000;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+th {
+  background: #d7d7d7;
+  text-align: left;
+  font-size: 14px;
+  padding: 4px 25px;
+  color: #000;
+  height: 24px;
+}
+
+td {
+  background: #5b5b5b;
+  border-bottom: 4px solid #474747;
+  padding: 5px 25px;
+  color: #050505;
+  height: 34px;
+}
+
+tr.selected td {
+  background: #934345;
+  color: #200;
+}
+
+.info-btn {
+  float: right;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #777;
+  color: #ddd;
+  text-align: center;
+  line-height: 18px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.empty-text {
+  height: 295px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d0d0d0;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.pager {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 17px;
+  text-align: center;
+  color: #d0d0d0;
+  font-size: 27px;
+  font-weight: 900;
+  user-select: none;
+}
+
+.pager span {
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+/* =========================
+   新增表單
+========================= */
+
+.form-title {
+  height: 49px;
+  background: #5a5a5a;
+  color: #d0d0d0;
+  font-size: 30px;
+  font-weight: 900;
+  padding: 8px 18px;
+  clip-path: polygon(0 0, 27% 0, 23% 100%, 0 100%);
+}
+
+.form-wrap {
+  height: 395px;
+  position: relative;
+  padding: 14px 17px;
+  color: #d0d0d0;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.field {
+  margin-bottom: 24px;
+}
+
+.field input {
+  width: 100%;
+  height: 30px;
+  border: none;
+  border-radius: 999px;
+  background: #8c8585;
+  color: white;
+  padding: 0 12px;
+  font-size: 17px;
+  outline: none;
+  margin-top: 6px;
+}
+
+.form-bottom-btn {
+  position: absolute;
+  right: 17px;
+  bottom: 16px;
+}
+
+/* =========================
+   詳細資料
+========================= */
+
+.detail-grid {
+  height: 395px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 12px;
+  padding: 10px;
+}
+
+.detail-text {
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.45;
+  color: #d0d0d0;
+}
+
+.vpn-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.vpn-card {
+  background: #aaa;
+  border-radius: 6px;
+  min-height: 120px;
+}
+
+/* =========================
+   Modal
+========================= */
+
+.modal-mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  width: 390px;
+  min-height: 275px;
+  background: #424242;
+  border: 2px solid #1d1d1d;
+  border-radius: 6px;
+  color: #cfcfcf;
+  text-align: center;
+  padding: 48px 60px;
+}
+
+.modal h2 {
+  font-size: 31px;
+  margin-bottom: 12px;
+}
+
+.modal p {
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.45;
+  margin-bottom: 20px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+/* =========================
+   頁面右上角操作按鈕
+========================= */
+
+.page-toolbar {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  z-index: 20;
+  display: flex;
+  gap: 10px;
+}
+
+.back-btn {
+  min-width: 92px;
+  height: 30px;
+  border-radius: 999px;
+  background: #d6d6d6;
+  color: #555;
+  font-size: 15px;
+  font-weight: 800;
+  border: 7px solid #666;
+  line-height: 16px;
+}
+
+/* 新增使用者頁面重新排版，避免被遮住 */
+.form-wrap {
+  padding-top: 22px;
+}
+
+.form-grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 42px;
+}
+
+.field {
+  margin-bottom: 18px;
+}
+
+.field input {
+  max-width: 100%;
+}
+/* 首頁：個人區塊內的選項垂直對齊 */
+.home-box p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 8px;
+}
+
+/* 讓「設定」「登出」「問題與回報」不要歪掉 */
+.home-box p span,
+.home-box p .menu-icon {
+  width: 28px;
+  display: inline-flex;
+  justify-content: center;
+}
+/* =========================
+   正式 Logo 圖片
+========================= */
+
+.login-logo {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.login-logo-img {
+  width: 520px;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   左上角 Logo 修正
+========================= */
+
+.top-logo {
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  width: 170px;
+  height: 60px;
+  background: #111;
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
+  z-index: 10;
+  overflow: hidden;
+  padding: 0;
+}
+
+.top-logo-img {
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  width: 800px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  display: block;
+}
+/* 修正登入頁：避免登入按鈕掉出卡片 */
+.login-card {
+  height: 540px;
+  padding: 42px 50px;
+}
+
+.login-avatar {
+  width: 95px;
+  height: 95px;
+  margin-bottom: 6px;
+}
+
+.login-logo {
+  height: 72px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.login-logo-img {
+  width: 800px;
+  height: auto;
+  display: block;
+}
+
+.login-field {
+  margin: 10px 0 14px;
+}
+
+.login-btn {
+  margin-top: 16px;
+}
+
+.login-error {
+  margin-top: 8px;
+}
+
+/* =========================
+   正式 Icon 圖片
+========================= */
+
+.icon-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.small-icon-img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.top-icon-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+.search-icon-img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: block;
+}
+
+.menu-icon-img {
+  width: 94px;
+  height: 94px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+.row-user-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.info-icon-img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
+}
+
+.btn-icon-img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.login-label-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.login-btn-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.home-box p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* =========================
+   首頁 VPN 帳號管理對齊修正
+========================= */
+
+.home-box.other-box {
+  position: relative;
+}
+
+.home-box.other-box p {
+  position: absolute;
+  left: 70px;
+  top: 86px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.home-box.other-box .menu-icon-img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+/* =========================
+   首頁區塊 icon 對齊修正
+========================= */
+
+.home-box {
+  position: relative;
+}
+
+.user-menu-item,
+.vpn-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vpn-menu-item {
+  position: absolute;
+  left: 70px;
+  top: 88px;
+  margin: 0;
+}
+
+.vpn-menu-item .menu-icon-img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.user-menu-item .menu-icon-img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+/* =========================
+   修正首頁 icon 太大、版面跑掉
+========================= */
+
+.home-grid {
+  height: 397px !important;
+  display: grid !important;
+  grid-template-columns: 1.35fr 1fr !important;
+  gap: 6px !important;
+  padding: 6px !important;
+}
+
+.home-right {
+  display: grid !important;
+  grid-template-rows: 1fr 1fr !important;
+  gap: 6px !important;
+  min-height: 0 !important;
+}
+
+.home-box {
+  position: relative !important;
+  overflow: hidden !important;
+  padding: 12px 18px !important;
+}
+
+/* 首頁大標題 */
+.home-box {
+  font-size: 38px !important;
+  font-weight: 900 !important;
+}
+
+/* 首頁選項文字 */
+.home-box p {
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 24px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+}
+
+/* 所有首頁 icon 統一大小 */
+.home-box .menu-icon-img {
+  width: 34px !important;
+  height: 34px !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+}
+
+/* 使用者列表位置 */
+.user-menu-item {
+  position: absolute !important;
+  left: 34px !important;
+  top: 92px !important;
+}
+
+/* 個人區塊：設定 */
+.personal-box p:nth-of-type(1) {
+  position: absolute !important;
+  left: 34px !important;
+  top: 78px !important;
+}
+
+/* 個人區塊：登出 */
+.personal-box p:nth-of-type(2) {
+  position: absolute !important;
+  left: 34px !important;
+  top: 142px !important;
+}
+
+/* VPN帳號管理位置 */
+.vpn-menu-item {
+  position: absolute !important;
+  left: 70px !important;
+  top: 88px !important;
+}
+
+/* VPN icon 稍微大一點 */
+.vpn-menu-item .menu-icon-img {
+  width: 38px !important;
+  height: 38px !important;
+}
+
+/* =========================
+   只修 VPN帳號管理 對齊
+========================= */
+
+.vpn-menu-item {
+  position: absolute !important;
+  left: 90px !important;
+  top: 94px !important;
+  margin: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+
+  font-size: 24px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+}
+
+.vpn-menu-item .menu-icon-img {
+  width: 34px !important;
+  height: 34px !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+}
+
+/* 只放大 VPN icon，不影響其他 icon */
+.vpn-menu-item .menu-icon-img {
+  width: 90px !important;
+  height: 90px !important;
+  object-fit: contain !important;
+  margin-right: -18px !important;
+}
+
+/* VPN 帳號管理：對齊到跟上面項目一樣 */
+.vpn-menu-item {
+  position: absolute !important;
+  left: 34px !important;
+  top: 92px !important;
+  margin: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+
+  font-size: 24px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+}
+
+.vpn-menu-item .menu-icon-img {
+  width: 42px !important;
+  height: 42px !important;
+  object-fit: contain !important;
+  margin: 0 !important;
+  transform: none !important;
+  flex-shrink: 0 !important;
+}
+
+/* =========================
+   鎖定整體畫面比例
+   不同電腦只等比例縮放，不拉伸變形
+========================= */
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #555;
+}
+
+/* 固定整個系統畫布大小 */
+.login-page,
+.app-page {
+  width: 1366px !important;
+  height: 768px !important;
+  min-width: 1366px !important;
+  min-height: 768px !important;
+
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+
+  transform: translate(-50%, -50%) scale(var(--ui-scale, 1)) !important;
+  transform-origin: center center !important;
+}
+
+/* =========================
+   修正下方搜尋欄 icon 對齊
+========================= */
+
+.inner-search {
+  width: 320px !important;
+  height: 13px !important;
+  line-height: 13px !important;
+  background: #555 !important;
+  border-radius: 999px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  padding-left: 8px !important;
+  overflow: hidden !important;
+}
+
+.inner-search .small-icon-img {
+  width: 14px !important;
+  height: 14px !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+/* 強制登入頁頭像改成 login-avatar.png */
+.login-avatar {
+  width: 105px !important;
+  height: 105px !important;
+  background: transparent !important;
+  margin: 0 auto 8px !important;
+  position: relative !important;
+  overflow: visible !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 關掉原本 CSS 畫出來的假頭像 */
+.login-avatar::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* 顯示新頭像圖片 */
+.login-avatar-img {
+  width: 105px !important;
+  height: 105px !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* 左側目前頁籤不要凸出文字 */
+.tab-piece.active {
+  width: 48px !important;
+  height: 31px !important;
+  padding-left: 0 !important;
+  overflow: hidden !important;
+  font-size: 0 !important;
+  color: transparent !important;
+  clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%) !important;
+}
