@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--
+  home.html
+  登入後的主控台首頁。
+  純導頁 hub：點功能進入各子頁，不打 API。
+-->
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UniAccess - 首頁</title>
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+  <section class="canvas has-decor">
+
+    <!-- 左上 logo -->
+    <div class="top-logo">
+      <img src="images/logo.png" class="top-logo-img" alt="UniAccess">
+    </div>
+
+    <!-- 上方搜尋列 -->
+    <div class="top-search">
+      <img src="images/icons/search.png" class="search-icon-img" alt="">
+      <input />
+    </div>
+
+    <div class="top-small-box"></div>
+
+    <!-- 上方右側 home / user 圖示 -->
+    <div class="top-icons">
+      <button class="top-icon" id="homeBtn">
+        <img src="images/icons/home.png" class="top-icon-img" alt="">
+      </button>
+      <button class="top-icon" id="profileBtn">
+        <img src="images/icons/user.png" class="top-icon-img" alt="">
+      </button>
+    </div>
+
+    <!-- 個人選單 -->
+    <div id="profileMenu" class="profile-menu hidden">
+      <div>
+        <img src="images/icons/settings.png" class="small-icon-img" alt=""> 設定
+      </div>
+      <div id="logoutMenuBtn">
+        <img src="images/icons/logout.png" class="small-icon-img" alt=""> 登出
+      </div>
+      <div>
+        <img src="images/icons/question.png" class="small-icon-img" alt=""> 問題與回報
+      </div>
+    </div>
+
+    <!-- 左側 tabs -->
+    <div class="left-tabs">
+      <div class="tab-piece"></div><div class="tab-piece"></div><div class="tab-piece"></div>
+      <div class="tab-piece"></div><div class="tab-piece"></div><div class="tab-piece"></div>
+      <div class="tab-piece"></div><div class="tab-piece"></div><div class="tab-piece"></div>
+      <div class="tab-piece"></div><div class="tab-piece"></div>
+    </div>
+
+    <!-- 主面板：首頁內容 -->
+    <main class="main-panel">
+      <div class="panel-head">
+        <div class="inner-search">
+          <img src="images/icons/search.png" class="small-icon-img" alt="">
+        </div>
+      </div>
+
+      <div class="home-grid">
+        <!-- 左欄：使用者相關 -->
+        <div class="home-box user-box">
+          使用者相關
+          <p class="menu-item" data-target="users.html">
+            <img src="images/icons/user-list.png" class="menu-icon-img" alt="">
+            使用者列表
+          </p>
+        </div>
+
+        <!-- 右欄：個人 + 其他 -->
+        <div class="home-right">
+          <div class="home-box personal-box">
+            個人
+            <p class="menu-item menu-item-1">
+              <img src="images/icons/settings.png" class="menu-icon-img" alt="">
+              設定
+            </p>
+            <p class="menu-item menu-item-2" data-target="logout">
+              <img src="images/icons/logout.png" class="menu-icon-img" alt="">
+              登出
+            </p>
+          </div>
+
+          <div class="home-box other-box">
+            其他
+            <p class="menu-item" data-target="vpn.html">
+              <img src="images/icons/vpn-manage.png" class="menu-icon-img" alt="">
+              VPN帳號管理
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 右側資訊欄 -->
+    <aside class="right-side">
+      <div class="notice-box">通知</div>
+      <div class="right-dark-box"></div>
+    </aside>
+
+  </section>
+
+  <script type="module" src="js/pages/home.js"></script>
+</body>
+</html>

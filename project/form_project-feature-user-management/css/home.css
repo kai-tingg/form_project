@@ -1,0 +1,63 @@
+/* =========================================================
+   home.css
+   首頁專屬：兩欄式區塊（使用者相關 / 個人 / 其他）
+========================================================= */
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 6px;
+  height: 397px;
+  padding: 6px;
+}
+
+.home-right {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 6px;
+  min-height: 0;
+}
+
+.home-box {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-bg-light);
+  color: var(--c-text-on-light);
+  border-radius: var(--r-sm);
+  padding: 12px 18px;
+  font-size: var(--fs-3xl);
+  font-weight: 900;
+}
+
+/* 選項：使用者列表 / 設定 / 登出 / VPN帳號管理 */
+.menu-item {
+  position: absolute;
+  left: 34px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  font-size: var(--fs-xl);
+  font-weight: 900;
+  line-height: 1;
+  padding: 6px var(--s-2);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: background-color var(--t-fast), transform var(--t-fast), filter var(--t-fast);
+}
+
+.menu-item:hover {
+  background-color: rgba(80, 80, 80, 0.28);
+  filter: brightness(1.15);
+  transform: translateX(4px);
+}
+
+.menu-item:active {
+  transform: translateX(2px) scale(0.98);
+}
+
+/* 各區塊內選項的絕對位置（依照原版位置） */
+.user-box .menu-item       { top: 92px; }
+.personal-box .menu-item-1 { top: 78px; }
+.personal-box .menu-item-2 { top: 142px; }
+.other-box .menu-item      { top: 88px; }

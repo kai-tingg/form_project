@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+  login.html
+  登入頁。登入成功後導到 home.html。
+-->
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UniAccess - 登入</title>
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+
+  <section class="login-page">
+    <div class="login-card">
+
+      <div class="login-avatar">
+        <img src="images/icons/login-avatar.png" class="login-avatar-img" alt="">
+      </div>
+
+      <form id="loginForm">
+        <div class="login-field">
+          <img src="images/icons/login-account.png" class="login-label-icon" alt="">
+          管理員帳號：
+          <input id="account" type="text" autocomplete="off" />
+        </div>
+
+        <div class="login-field">
+          <img src="images/icons/login-password.png" class="login-label-icon" alt="">
+          管理員密碼：
+          <input id="password" type="password" />
+        </div>
+
+        <button class="login-btn" type="submit">
+          <img src="images/icons/login.png" class="login-btn-icon" alt="">
+          登入
+        </button>
+
+        <div id="loginError" class="login-error hidden">
+          帳號或密碼錯誤：admin / 123456
+        </div>
+      </form>
+
+    </div>
+  </section>
+
+  <script type="module" src="js/pages/login.js"></script>
+</body>
+</html>

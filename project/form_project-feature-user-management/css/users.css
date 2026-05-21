@@ -1,0 +1,70 @@
+/* =========================================================
+   users.css
+   使用者相關頁面共用：列表、新增表單、詳情
+========================================================= */
+
+/* =========================
+   使用者列表（users.html）
+========================= */
+
+.user-row .row-icon {
+  margin-right: 6px;
+}
+
+/* =========================
+   新增使用者表單（user-add.html）
+========================= */
+
+.form-title {
+  height: 49px;
+  background: #5a5a5a;
+  color: var(--c-text-muted);
+  font-size: var(--fs-2xl);
+  font-weight: 900;
+  padding: var(--s-2) 18px;
+  clip-path: polygon(0 0, 27% 0, 23% 100%, 0 100%);
+}
+
+.form-wrap {
+  height: 395px;
+  position: relative;
+  padding: 22px 17px 14px;
+  color: var(--c-text-muted);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 42px;
+}
+
+/* =========================
+   使用者詳情（user-detail.html）
+========================= */
+
+.detail-grid {
+  height: 395px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--s-3);
+  padding: 10px;
+}
+
+.detail-text {
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.45;
+  color: var(--c-text-muted);
+}
+
+.vpn-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.vpn-card {
+  background: var(--c-bg-light);
+  border-radius: 6px;
+  min-height: 120px;
+}
