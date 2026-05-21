@@ -1,0 +1,103 @@
+:root {
+    --border-dark: #333333; 
+    --fill-light: #5a5a5a;
+    --header-dark: #2a2a2a;
+    --orange-brand: #f38200;
+    --selected-red: #7b3838;
+    --btn-grey: #bdbdbd;
+    --input-bg: #666666;
+}
+
+body, html {
+    margin: 0; padding: 0;
+    width: 100vw; height: 100vh;
+    background-color: #111;
+    display: flex; justify-content: center; align-items: center;
+    overflow: hidden;
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+
+#fixed-canvas {
+    width: 1920px; height: 1080px;
+    background-color: white;
+    position: relative;
+    flex-shrink: 0;
+    border: 4px solid #8c8c8c;
+    transform-origin: center;
+}
+
+/* --- 背景設計 (斜角色塊) --- */
+.bg-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+.bg-shape { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+#bg-black { background: #000; clip-path: polygon(0 0, 26% 0, 100% 100%, 0 100%); z-index: 1; }
+#bg-darkgrey { background: #2a2a2a; clip-path: polygon(26% 0, 48% 0, 100% 100%); z-index: 2; }
+#bg-orange { background: #452a0b; clip-path: polygon(48% 0, 71% 0, 100% 100%); z-index: 3; }
+#bg-lightgrey { background: #3a3a3a; clip-path: polygon(71% 0, 100% 0, 100% 100%); z-index: 4; }
+
+#ui-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 10; display: flex; flex-direction: column;
+}
+
+/* --- Header --- */
+header { height: 120px; display: flex; align-items: center; }
+.logo-block { background-color: #222; height: 100%; width: 400px; clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%); display: flex; align-items: center; padding-left: 35px; }
+.logo-placeholder { width: 70px; height: 70px; margin-right: 15px; background: var(--orange-brand); border-radius: 8px; display:flex; align-items:center; justify-content:center; }
+.logo-text { color: white; font-size: 48px; font-weight: bold; }
+
+.top-nav { flex: 1; display: flex; align-items: center; padding: 0 40px; gap: 30px; }
+.search-wrapper { position: relative; flex: 1; display: flex; align-items: center; background: #444; border: 3px solid var(--border-dark); border-radius: 35px; height: 60px; padding: 0 20px; }
+.search-wrapper input { flex: 1; background: transparent; border: none; padding-left: 15px; color: white; font-size: 20px; outline: none; }
+.search-btn svg { fill: #ccc; width: 32px; height: 32px; }
+
+.top-btns { display: flex; gap: 15px; padding-right: 40px; }
+.btn-ui-rect { background: var(--fill-light); border: 3px solid var(--border-dark); border-radius: 12px; width: 160px; height: 60px; }
+.btn-ui-circle { background: var(--fill-light); border: 3px solid var(--border-dark); border-radius: 50%; width: 60px; height: 60px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.btn-ui-circle svg { fill: #ccc; width: 34px; height: 34px; }
+
+/* --- 主要內容區 & 側邊欄 --- */
+.main-content { flex: 1; display: flex; padding: 30px 30px 30px 100px; gap: 30px; position: relative; }
+.side-bar { position: absolute; left: 0; top: 40px; display: flex; flex-direction: column; gap: 8px; }
+.trap-btn { width: 85px; height: 50px; background: var(--fill-light); clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%); }
+
+/* --- 中央面板 --- */
+.center-panel { flex: 1; background: var(--fill-light); border: 5px solid var(--border-dark); border-radius: 20px; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+.panel-header { height: 100px; background: var(--header-dark); border-bottom: 5px solid var(--border-dark); display: flex; align-items: center; padding: 0 30px; justify-content: space-between; }
+.inner-search { width: 450px; height: 45px; background: #333; border: 2px solid var(--border-dark); border-radius: 8px; display: flex; align-items: center; padding: 0 15px; }
+.inner-search input { background: transparent; border: none; color: white; width: 100%; outline: none; padding-left: 10px; }
+
+/* 按鈕樣式 */
+.action-btns { display: flex; gap: 20px; }
+.action-btn { width: 160px; height: 55px; border-radius: 30px; border: 5px solid transparent; font-size: 24px; font-weight: bold; cursor: pointer; background: var(--btn-grey); }
+.style-green { border-color: #2e7d32; }
+.style-red { border-color: #c62828; }
+.style-gray { border-color: #535353; }
+
+/* 列表 & 分頁 */
+#list-view { display: flex; flex-direction: column; flex: 1; }
+.list-header { background: #bdbdbd; color: #111; display: flex; padding: 15px 0; font-weight: bold; font-size: 22px; }
+.col { padding-left: 40px; flex: 1; }
+.vpn-item { display: flex; border-bottom: 2px solid var(--border-dark); height: 60px; align-items: center; color: black; cursor: pointer; font-size: 22px; font-weight: bold; background: #555; }
+.vpn-item.selected { background: var(--selected-red) !important; color: white; }
+.panel-footer { height: 80px; background: var(--header-dark); border-top: 5px solid var(--border-dark); display: flex; justify-content: center; align-items: center; color: white; gap: 30px; }
+.nav-arrow { cursor: pointer; font-size: 36px; }
+
+/* 新增頁面表單 */
+#add-view { display: none; flex-direction: column; flex: 1; padding: 50px 70px; color: white; position: relative; }
+#add-view h2 { font-size: 42px; margin-bottom: 40px; font-weight: normal; }
+.form-group { margin-bottom: 35px; }
+.form-group label { display: block; font-size: 28px; margin-bottom: 12px; color: #ddd; }
+.form-group input { width: 550px; height: 50px; background: var(--input-bg); border: none; border-radius: 25px; padding: 0 25px; color: white; font-size: 24px; outline: none; }
+.confirm-btn-pos { position: absolute; bottom: 40px; right: 50px; }
+
+/* --- 彈窗設計 (image_642acc.png / confirm.png) --- */
+.modal-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 100; display: none; justify-content: center; align-items: center; }
+.modal-content { background: #444; width: 750px; height: 500px; border-radius: 15px; border: 4px solid var(--border-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ddd; text-align: center; }
+.modal-content h2 { font-size: 55px; margin: 0 0 25px 0; letter-spacing: 2px; }
+.modal-info { text-align: left; font-size: 30px; line-height: 1.6; margin-bottom: 30px; font-family: monospace; }
+.modal-btn-group { display: flex; gap: 50px; }
+.modal-btn { width: 220px; height: 75px; border-radius: 40px; border: 8px solid transparent; background: #bdbdbd; font-size: 32px; font-weight: bold; cursor: pointer; }
+
+/* 右側 */
+.right-section { width: 380px; display: flex; flex-direction: column; gap: 30px; }
+.small-box { flex: 1; background: var(--fill-light); border: 5px solid var(--border-dark); border-radius: 20px; }

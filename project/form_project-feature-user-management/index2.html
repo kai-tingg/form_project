@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UniAccess</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- 登入頁 -->
+  <section id="loginPage" class="login-page">
+    <div class="login-card">
+      <div class="login-avatar">
+  <img src="images/icons/login-avatar.png" class="login-avatar-img" alt="">
+</div>
+
+      <form id="loginForm">
+        <div class="login-field">
+         <img src="images/icons/login-account.png" class="login-label-icon" alt="">
+管理員帳號：
+<input id="account" type="text" autocomplete="off" />
+
+        <div class="login-field">
+          <img src="images/icons/login-password.png" class="login-label-icon" alt="">
+管理員密碼：
+<input id="password" type="password" />
+        </div>
+
+        <button class="login-btn" type="submit">
+  <img src="images/icons/login.png" class="login-btn-icon" alt="">
+  登入
+</button>
+        <div id="loginError" class="login-error hidden">
+          帳號或密碼錯誤：admin / 123456
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 主系統 -->
+  <section id="appPage" class="app-page hidden">
+    <div class="top-logo">
+  <img src="images/logo.png" class="top-logo-img" alt="UniAccess">
+</div>
+
+   <div class="top-search">
+  <img src="images/icons/search.png" class="search-icon-img" alt="">
+  <input id="globalSearchInput" />
+</div>
+
+    <div class="top-small-box"></div>
+
+    <div class="top-icons">
+    <button class="top-icon" id="homeBtn">
+  <img src="images/icons/home.png" class="top-icon-img" alt="">
+</button>
+
+<button class="top-icon" id="profileBtn">
+  <img src="images/icons/user.png" class="top-icon-img" alt="">
+</button>
+    </div>
+
+    <div id="profileMenu" class="profile-menu hidden">
+     <div>
+  <img src="images/icons/settings.png" class="small-icon-img" alt="">
+  設定
+</div>
+
+<div id="logoutMenuBtn">
+  <img src="images/icons/logout.png" class="small-icon-img" alt="">
+  登出
+</div>
+
+<div>
+  <img src="images/icons/question.png" class="small-icon-img" alt="">
+  問題與回報
+</div>
+    </div>
+
+    <div id="leftTabs" class="left-tabs"></div>
+
+    <main class="main-panel">
+      <div class="panel-head">
+       <div class="inner-search">
+  <img src="images/icons/search.png" class="small-icon-img" alt="">
+</div>
+      </div>
+
+      <div id="pageContent"></div>
+    </main>
+
+    <aside class="right-side">
+      <div class="notice-box">通知</div>
+      <div class="right-dark-box"></div>
+    </aside>
+  </section>
+
+  <!-- 確認視窗 -->
+  <div id="confirmModal" class="modal-mask hidden">
+    <div class="modal">
+      <h2 id="confirmTitle"></h2>
+      <p id="confirmText"></p>
+
+      <div class="modal-actions">
+        <button id="yesBtn" class="pill-btn pill-green">是</button>
+        <button id="noBtn" class="pill-btn pill-red">否</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/scriptB.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  
+</body>
+</html>

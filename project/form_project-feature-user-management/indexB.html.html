@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>UniAccess - VPN 管理系統</title>
+    <link rel="stylesheet" href="styleB.css">
+</head>
+<body>
+
+    <div id="fixed-canvas">
+        <div class="bg-layer">
+            <div class="bg-shape" id="bg-black"></div>
+            <div class="bg-shape" id="bg-darkgrey"></div>
+            <div class="bg-shape" id="bg-orange"></div>
+            <div class="bg-shape" id="bg-lightgrey"></div>
+        </div>
+
+        <div class="modal-overlay" id="deleteModal">
+            <div class="modal-content">
+                <h2>是否撤銷VPN帳號?</h2>
+                <div class="modal-info">
+                    帳號名稱：<span id="del-name">XXX</span><br>
+                    VLANID：<span id="del-vlan">00000000</span>
+                </div>
+                <div class="modal-btn-group">
+                    <button class="modal-btn" style="border-color:#2e7d32" onclick="confirmDelete()">是</button>
+                    <button class="modal-btn" style="border-color:#c62828" onclick="closeModal('deleteModal')">否</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-overlay" id="addConfirmModal">
+            <div class="modal-content">
+                <h2>是否新增VPN帳號?</h2>
+                <div class="modal-info">
+                    使用者名稱：<span id="conf-user">XXX</span><br>
+                    帳號名稱：<span id="conf-name">xxxxx</span><br>
+                    VLANID：<span id="conf-vlan">xxxxxx</span>
+                </div>
+                <div class="modal-btn-group">
+                    <button class="modal-btn" style="border-color:#2e7d32" onclick="finalAddProcess()">是</button>
+                    <button class="modal-btn" style="border-color:#c62828" onclick="closeModal('addConfirmModal')">否</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="ui-overlay">
+            <header>
+                <div class="logo-block">
+                    <div class="logo-placeholder">
+                        <svg viewBox="0 0 24 24" style="fill:white; width:45px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                    </div>
+                    <div class="logo-text">UniAccess</div>
+                </div>
+                <div class="top-nav">
+                    <div class="search-wrapper">
+                        <div class="search-btn"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+                        <input type="text" placeholder="搜尋...">
+                    </div>
+                    <div class="top-btns">
+                        <div class="btn-ui-rect"></div>
+                        <div class="btn-ui-circle" onclick="goHome()"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+                        <div class="btn-ui-circle"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="main-content">
+                <div class="side-bar">
+                    <div class="trap-btn"></div><div class="trap-btn"></div><div class="trap-btn"></div>
+                    <div class="trap-btn"></div><div class="trap-btn"></div><div class="trap-btn"></div>
+                </div>
+
+                <div class="center-panel">
+                    <div class="panel-header">
+                        
+                        <div class="inner-search">
+                            <input type="text" placeholder="搜尋列表...">
+                            
+                        </div>
+                            
+                        <div class="action-btns" id="list-actions">
+                            <button hidden id="btn-back" class="action-btn style-gray" onclick="goHome()">返回</button>
+                            <button id="btn-primary" class="action-btn style-green" onclick="handlePrimaryAction()">撤銷</button>
+                            <button id="btn-secondary" class="action-btn style-red" onclick="handleSecondaryAction()">新增</button>
+                            
+                        </div>
+                    </div>
+
+                    <div id="list-view">
+                        <div class="list-header">
+                            <div class="col">使用者名稱</div>
+                            <div class="col">VPN帳號名稱</div>
+                            <div class="col">VLANID</div>
+                        </div>
+                        <div id="vpn-list" style="flex:1"></div>
+                        <div class="panel-footer">
+                            <div class="nav-arrow" onclick="changePage('prev')">◀◀</div>
+                            <div id="page-display" style="font-size: 28px; font-weight: bold;">第 1 頁 / 共 1 頁</div>
+                            <div class="nav-arrow" onclick="changePage('next')">▶▶</div>
+                        </div>
+                    </div>
+                    
+
+                    <div id="add-view">
+                        
+                        <h2>新增VPN帳號</h2>
+                        
+                        <div class="form-group">
+                            <label>使用者帳號名稱：</label>
+                            <input type="text" id="in-user">
+                        </div>
+                        <div class="form-group">
+                            <label>VPN帳號名稱：</label>
+                            <input type="text" id="in-name">
+                        </div>
+                        <div class="form-group">
+                            <label>VLANID：</label>
+                            <input type="text" id="in-vlan">
+                        </div>
+                        <div class="confirm-btn-pos">
+                            <button id="btn-back" class="action-btn style-gray" onclick="goHome()">返回</button>
+                            <button class="action-btn style-green" onclick="triggerAddConfirm()">確認</button>
+
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="right-section">
+                    <div class="small-box"></div>
+                    <div class="small-box"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/scriptB.js"></script>
+</body>
+</html>
