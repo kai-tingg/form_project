@@ -67,4 +67,7 @@
   /* ---- 畫布尺寸（全站統一為 1366x768） ---- */
   --canvas-w: 1366px;
   --canvas-h: 768px;
+  --ui-scale: 1;
+  --ui-scale-x: 1;
+  --ui-scale-y: 1;
 }

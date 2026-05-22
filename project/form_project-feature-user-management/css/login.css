@@ -6,11 +6,11 @@
 .login-page {
   width: var(--canvas-w);
   height: var(--canvas-h);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) scale(var(--ui-scale, 1));
-  transform-origin: center center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: scale(var(--ui-scale-x), var(--ui-scale-y));
+  transform-origin: left top;
   overflow: hidden;
   border: 5px solid var(--c-bg-dark);
   background: var(--c-bg-light);

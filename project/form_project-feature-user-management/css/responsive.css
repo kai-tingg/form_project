@@ -1,0 +1,439 @@
+/* =========================================================
+   responsive.css
+   Bootstrap-style responsive art direction.
+   Large landscape screens keep the original 1366x768 stage.
+   Narrow, tablet, and portrait screens switch to a fluid app layout.
+========================================================= */
+
+@media (min-width: 1101px) and (orientation: landscape) {
+  html,
+  body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .canvas,
+  .login-page {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    transform: none !important;
+    transform-origin: left top !important;
+  }
+
+  .canvas {
+    border-width: 4px;
+  }
+
+  .login-page {
+    border-width: 5px;
+  }
+
+  .main-panel {
+    left: 67px;
+    top: 91px;
+    width: calc(100vw - 67px - 226px);
+    height: calc(100vh - 131px);
+  }
+
+  .panel-head {
+    height: 43px;
+  }
+
+  .home-grid {
+    height: calc(100% - 43px);
+  }
+
+  .right-side {
+    right: 8px;
+    top: 173px;
+    width: 176px;
+    height: calc(100vh - 213px);
+  }
+
+  .notice-box {
+    height: min(178px, 45%);
+  }
+
+  .right-dark-box {
+    height: calc(100% - min(178px, 45%) - 4px);
+  }
+
+  .form-wrap,
+  .detail-grid {
+    height: calc(100% - 49px);
+  }
+
+  #userTableHost,
+  #vpnTableHost {
+    height: calc(100% - 122px);
+    overflow: auto;
+  }
+
+  .pager {
+    bottom: 17px;
+  }
+
+  .login-card {
+    width: 365px;
+    height: 540px;
+  }
+}
+
+@media (max-width: 1100px), (orientation: portrait) {
+  html,
+  body {
+    min-height: 100%;
+    height: auto;
+    overflow: auto;
+    background:
+      linear-gradient(140deg, rgba(99, 54, 0, 0.2), transparent 34%),
+      var(--c-bg-page);
+  }
+
+  body {
+    padding: 0;
+  }
+
+  .canvas,
+  .login-page {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: 100dvh;
+    height: auto;
+    transform: none;
+    overflow: visible;
+    border: 0;
+  }
+
+  .canvas {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(190px, 24vw);
+    grid-template-areas:
+      "logo icons"
+      "search search"
+      "main side";
+    gap: 14px;
+    align-items: start;
+    padding: 14px;
+    background:
+      linear-gradient(120deg, var(--c-bg-darkest) 0 18%, transparent 18%),
+      linear-gradient(102deg, transparent 0 62%, rgba(243, 130, 0, 0.18) 62% 78%, transparent 78%),
+      var(--c-bg-canvas);
+  }
+
+  .canvas.has-decor::before,
+  .canvas.has-decor::after,
+  .left-tabs,
+  .top-small-box {
+    display: none;
+  }
+
+  .top-logo,
+  .top-search,
+  .top-icons,
+  .profile-menu,
+  .main-panel,
+  .right-side {
+    position: static;
+  }
+
+  .top-logo {
+    grid-area: logo;
+    width: min(230px, 56vw);
+    height: 64px;
+    clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
+  }
+
+  .top-logo-img {
+    width: 760px;
+  }
+
+  .top-icons {
+    grid-area: icons;
+    justify-self: end;
+    align-self: center;
+  }
+
+  .top-search {
+    grid-area: search;
+    width: 100%;
+    min-height: 42px;
+    height: 42px;
+    padding-inline: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .profile-menu {
+    position: absolute;
+    right: 14px;
+    top: 78px;
+  }
+
+  .main-panel {
+    grid-area: main;
+    width: 100%;
+    min-height: min(650px, calc(100dvh - 160px));
+    height: auto;
+    border-width: 3px;
+    overflow: visible;
+  }
+
+  .right-side {
+    grid-area: side;
+    width: 100%;
+    height: auto;
+    display: grid;
+    gap: 12px;
+  }
+
+  .notice-box,
+  .right-dark-box {
+    min-height: 150px;
+    height: auto;
+    margin: 0;
+  }
+
+  .page-toolbar {
+    position: static;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    padding: 10px 12px 0;
+  }
+
+  .btn-pill {
+    min-width: 88px;
+    height: 34px;
+    border-width: 5px;
+    line-height: 18px;
+  }
+
+  .panel-head {
+    height: auto;
+    min-height: 52px;
+    padding: 12px;
+  }
+
+  .inner-search {
+    width: 100%;
+    height: 24px;
+  }
+
+  .home-grid,
+  .home-right,
+  .form-grid,
+  .detail-grid,
+  .vpn-card-grid,
+  .vpn-form-grid {
+    height: auto;
+  }
+
+  .home-grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+    min-height: 430px;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .home-right {
+    gap: 10px;
+  }
+
+  .home-box {
+    min-height: 190px;
+  }
+
+  .menu-item {
+    position: relative;
+    left: auto;
+    top: auto !important;
+    margin-top: 24px;
+  }
+
+  .personal-box .menu-item-2 {
+    margin-top: 14px;
+  }
+
+  #userTableHost,
+  #vpnTableHost {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 680px;
+  }
+
+  .pager {
+    position: static;
+    padding: 18px 0 20px;
+  }
+
+  .form-title {
+    width: min(360px, 65%);
+    clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+  }
+
+  .form-wrap {
+    height: auto;
+    min-height: 360px;
+  }
+
+  .form-grid {
+    gap: 24px;
+  }
+
+  .detail-grid {
+    grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    background: var(--c-bg-canvas);
+  }
+
+  .canvas {
+    display: block;
+    padding: 12px;
+  }
+
+  .top-logo {
+    width: 205px;
+    height: 58px;
+  }
+
+  .top-icons {
+    position: absolute;
+    right: 12px;
+    top: 20px;
+  }
+
+  .top-search {
+    margin-top: 12px;
+  }
+
+  .main-panel {
+    margin-top: 14px;
+    min-height: auto;
+    border-radius: var(--r-md);
+  }
+
+  .right-side {
+    display: block;
+    margin-top: 12px;
+  }
+
+  .notice-box {
+    min-height: 96px;
+    font-size: var(--fs-xl);
+  }
+
+  .right-dark-box {
+    display: none;
+  }
+
+  .home-grid,
+  .home-right,
+  .form-grid,
+  .detail-grid,
+  .vpn-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-grid {
+    min-height: 0;
+  }
+
+  .home-box {
+    min-height: 148px;
+    font-size: var(--fs-2xl);
+  }
+
+  .menu-item {
+    font-size: var(--fs-lg);
+    margin-top: 18px;
+  }
+
+  .menu-icon-img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .page-toolbar {
+    justify-content: stretch;
+  }
+
+  .page-toolbar .btn-pill {
+    flex: 1 1 110px;
+  }
+
+  .form-title {
+    width: 100%;
+    clip-path: none;
+  }
+
+  .form-wrap {
+    padding: 18px 14px 22px;
+  }
+
+  .field {
+    font-size: var(--fs-lg);
+  }
+
+  .detail-grid {
+    min-height: 0;
+    padding: 14px;
+  }
+
+  .vpn-card-grid {
+    gap: 8px;
+  }
+
+  .vpn-card {
+    min-height: 92px;
+  }
+
+  .confirm-dialog {
+    width: min(92vw, 390px);
+    min-height: 0;
+    padding: 36px 28px;
+  }
+
+  .login-page {
+    padding: 24px 14px;
+    align-items: stretch;
+  }
+
+  .login-card {
+    width: min(100%, 390px);
+    height: auto;
+    min-height: 500px;
+    margin: auto;
+    padding: 38px 34px;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: landscape) {
+  .canvas {
+    grid-template-columns: minmax(0, 1fr) 180px;
+  }
+
+  .right-side {
+    gap: 8px;
+  }
+
+  .notice-box,
+  .right-dark-box {
+    min-height: 130px;
+  }
+
+  .home-box {
+    min-height: 170px;
+  }
+}

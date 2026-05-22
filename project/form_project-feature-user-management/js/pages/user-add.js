@@ -48,7 +48,15 @@ document.getElementById("submitBtn").addEventListener("click", () => {
   `;
 
   openConfirm("是否新增使用者？", summary, async () => {
-    await createUser(payload);
-    window.location.href = "users.html";
+    const submitBtn = document.getElementById("submitBtn");
+    submitBtn.disabled = true;
+
+    try {
+      await createUser(payload);
+      window.location.href = "users.html";
+    } catch (error) {
+      submitBtn.disabled = false;
+      alert(`新增使用者失敗：${error.message || "未知錯誤"}`);
+    }
   });
 });

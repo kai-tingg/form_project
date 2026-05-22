@@ -1,20 +1,23 @@
 // =========================================================
 // js/lib/ui-scale.js
-// 等比縮放整個畫布
+// 縮放整個畫布
 // ---------------------------------------------------------
-// 設計尺寸固定 1366x768，依視窗大小計算 --ui-scale，
-// 由 shared.css 中的 .canvas / .login-page 套用 transform: scale()。
+// 設計尺寸固定 1366x768。
+// 桌機版用 X/Y 分別縮放，讓舞台貼合瀏覽器比例；
+// 窄版響應式 CSS 會取消 transform，改用流式排版。
 // =========================================================
 
 const DESIGN_WIDTH = 1366;
 const DESIGN_HEIGHT = 768;
 
 function applyScale() {
-  const scale = Math.min(
-    window.innerWidth / DESIGN_WIDTH,
-    window.innerHeight / DESIGN_HEIGHT
-  );
+  const scaleX = window.innerWidth / DESIGN_WIDTH;
+  const scaleY = window.innerHeight / DESIGN_HEIGHT;
+  const scale = Math.min(scaleX, scaleY);
+
   document.documentElement.style.setProperty("--ui-scale", scale);
+  document.documentElement.style.setProperty("--ui-scale-x", scaleX);
+  document.documentElement.style.setProperty("--ui-scale-y", scaleY);
 }
 
 /** 在頁面進站時呼叫一次即可：自動安裝 resize listener。 */
