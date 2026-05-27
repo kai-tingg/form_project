@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+  users.html
+  使用者列表頁。
+  API：getUsers (載入時) / revokeUser (撤銷時)
+-->
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UniAccess - 使用者列表</title>
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="css/users.css" />
+</head>
+<body>
+
+  <section class="canvas has-decor">
+
+    <!-- ===== Top Bar（與 home.html 相同結構） ===== -->
+    <div class="top-logo">
+      <img src="images/logo.png" class="top-logo-img" alt="UniAccess">
+    </div>
+    <div class="top-search">
+      <img src="images/icons/search.png" class="search-icon-img" alt="">
+      <input />
+    </div>
+    <div class="top-small-box"></div>
+    <div class="top-icons">
+      <button class="top-icon" id="homeBtn"><img src="images/icons/home.png" class="top-icon-img" alt=""></button>
+      <button class="top-icon" id="profileBtn"><img src="images/icons/user.png" class="top-icon-img" alt=""></button>
+    </div>
+    <div id="profileMenu" class="profile-menu hidden">
+      <div><img src="images/icons/settings.png" class="small-icon-img" alt=""> 設定</div>
+      <div id="logoutMenuBtn"><img src="images/icons/logout.png" class="small-icon-img" alt=""> 登出</div>
+      <div><img src="images/icons/question.png" class="small-icon-img" alt=""> 問題與回報</div>
+    </div>
+
+    <!-- ===== 左側 tabs：當前頁為「使用者列表」，第一片高亮（採文字） ===== -->
+    <div class="left-tabs">
+      <div class="tab-piece" style="background:#555"></div>
+      <div class="tab-piece"></div><div class="tab-piece"></div><div class="tab-piece"></div>
+      <div class="tab-piece"></div><div class="tab-piece"></div><div class="tab-piece"></div>
+      <div class="tab-piece"></div><div class="tab-piece"></div><div class="tab-piece"></div>
+      <div class="tab-piece"></div>
+    </div>
+
+    <!-- ===== 主面板 ===== -->
+    <main class="main-panel">
+      <!-- 工具列：返回 / 新增 / 撤銷 -->
+      <div class="page-toolbar">
+        <button id="backBtn"   class="btn-pill">返回</button>
+        <button id="addBtn"    class="btn-pill btn-green">☁ 新增</button>
+        <button id="revokeBtn" class="btn-pill btn-red">☁ 撤銷</button>
+      </div>
+
+      <div class="panel-head">
+        <div class="inner-search">
+          <img src="images/icons/search.png" class="small-icon-img" alt="">
+        </div>
+      </div>
+
+      <!-- 表格容器：由 users.js 注入 -->
+      <div id="userTableHost"></div>
+
+      <!-- 分頁器 -->
+      <div class="pager">
+        <span id="prevPage">◀◀</span>
+        <span id="pagerLabel">第1筆 / 共1筆</span>
+        <span id="nextPage">▶▶</span>
+      </div>
+    </main>
+
+    <!-- ===== 右側 ===== -->
+    <aside class="right-side">
+      <div class="notice-box">通知</div>
+      <div class="right-dark-box"></div>
+    </aside>
+
+  </section>
+
+  <!-- ===== 確認視窗（modal.js 會控制） ===== -->
+  <div id="confirmModal" class="modal-mask hidden">
+    <div class="modal">
+      <h2 id="confirmTitle"></h2>
+      <p id="confirmText"></p>
+      <div class="modal-actions">
+        <button id="yesBtn" class="btn-pill btn-green">是</button>
+        <button id="noBtn"  class="btn-pill btn-red">否</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/pages/users.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+/* =========================================================
+   users.css
+   使用者相關頁面共用：列表、新增表單、詳情
+========================================================= */
+
+/* =========================
+   使用者列表（users.html）
+========================= */
+
+.user-row .row-icon {
+  margin-right: 6px;
+}
+
+/* =========================
+   新增使用者表單（user-add.html）
+========================= */
+
+.form-title {
+  height: 49px;
+  background: #5a5a5a;
+  color: var(--c-text-muted);
+  font-size: var(--fs-2xl);
+  font-weight: 900;
+  padding: var(--s-2) 18px;
+  clip-path: polygon(0 0, 27% 0, 23% 100%, 0 100%);
+}
+
+.form-wrap {
+  height: 395px;
+  position: relative;
+  padding: 22px 17px 14px;
+  color: var(--c-text-muted);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 42px;
+}
+
+/* =========================
+   使用者詳情（user-detail.html）
+========================= */
+
+.detail-grid {
+  height: 395px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--s-3);
+  padding: 10px;
+}
+
+.detail-text {
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.45;
+  color: var(--c-text-muted);
+}
+
+.vpn-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.vpn-card {
+  background: var(--c-bg-light);
+  border-radius: 6px;
+  min-height: 120px;
+}
+
+/* =========================================================
+   使用者相關頁面 RWD 響應式設定 (手機與小螢幕裝置)
+========================================================= */
+@media (max-width: 768px) {
+  /* 1. 新增表單：解除固定高度 395px，雙欄改單欄向下排 */
+  .form-wrap {
+    height: auto;
+    padding: 20px 15px;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .form-title {
+    clip-path: none; /* 手機上移除斜角避免變形 */
+    height: auto;
+    padding: 10px 15px;
+  }
+
+  /* 2. 使用者詳情：解除左文字、右卡片的固定寬高，改為上下堆疊 */
+  .detail-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 20px;
+  }
+  
+  /* 3. VPN 卡片：原本的三欄並排，改為兩欄 (空間才夠塞) */
+  .vpn-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 針對超小螢幕 (如 iPhone SE 等寬度小於 480px 的設備) */
+@media (max-width: 480px) {
+  .vpn-card-grid {
+    grid-template-columns: 1fr; /* 螢幕再小就變成一列一張卡片 */
+  }
+}

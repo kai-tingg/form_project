@@ -1,0 +1,721 @@
+/* =========================================================
+   shared.css
+   跨頁共用：reset、畫布縮放、top-bar、左側 tabs、按鈕、modal、
+   表單、表格、分頁器、動畫
+   ---------------------------------------------------------
+   此檔不放任何頁面專屬樣式。頁面專屬樣式放 css/<page>.css。
+========================================================= */
+
+/* =========================
+   Reset & 基礎
+========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--c-bg-page);
+  font-family: Arial, "Microsoft JhengHei", sans-serif;
+  color: var(--c-text-primary);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* =========================
+   畫布縮放
+   所有頁面的 .canvas 在不同螢幕上等比縮放
+   --ui-scale 由 js/lib/ui-scale.js 動態設定
+========================= */
+
+.canvas {
+  width: var(--canvas-w);
+  height: var(--canvas-h);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--ui-scale, 1));
+  transform-origin: center center;
+  overflow: hidden;
+  border: 4px solid var(--c-bg-darkest);
+  background: var(--c-bg-canvas);
+}
+
+/* =========================
+   背景斜角裝飾（登入頁外的所有頁面）
+========================= */
+
+.canvas.has-decor::before {
+  content: "";
+  position: absolute;
+  left: 178px;
+  top: 0;
+  width: 615px;
+  height: 103px;
+  background: var(--c-bg-darkest);
+  clip-path: polygon(0 0, 100% 0, 70% 100%, 30% 100%);
+  z-index: 1;
+}
+
+.canvas.has-decor::after {
+  content: "";
+  position: absolute;
+  left: 515px;
+  top: 0;
+  width: 245px;
+  height: 150px;
+  background: var(--c-brand-dark);
+  clip-path: polygon(0 0, 75% 0, 100% 100%, 35% 100%);
+  opacity: 0.9;
+  z-index: 1;
+}
+
+/* =========================
+   Top Bar：logo / 搜尋 / icons
+========================= */
+
+.top-logo {
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  width: 170px;
+  height: 60px;
+  background: var(--c-bg-darker);
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.top-logo-img {
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  width: 800px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  display: block;
+}
+
+.top-search {
+  position: absolute;
+  left: 205px;
+  right: 190px;
+  top: 13px;
+  height: 32px;
+  background: #3a3a3a;
+  border-radius: var(--r-pill);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+}
+
+.top-search input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--c-text-primary);
+  padding: 0 12px;
+  font-size: var(--fs-md);
+}
+
+.search-icon-img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: block;
+}
+
+.top-small-box {
+  position: absolute;
+  right: 93px;
+  top: 12px;
+  width: 84px;
+  height: 34px;
+  background: #3d3d3d;
+  border-radius: var(--r-md);
+  z-index: 10;
+}
+
+.top-icons {
+  position: absolute;
+  right: 17px;
+  top: 12px;
+  display: flex;
+  gap: var(--s-2);
+  z-index: 11;
+}
+
+.top-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #bcbcbc;
+  border: 2px solid var(--c-bg-page);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--t-fast), filter var(--t-fast), background-color var(--t-fast);
+}
+
+.top-icon-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+.top-icon:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  filter: brightness(1.25);
+  transform: scale(1.08);
+}
+
+.top-icon:active {
+  transform: scale(0.94);
+}
+
+/* =========================
+   個人選單（右上角下拉）
+========================= */
+
+.profile-menu {
+  position: absolute;
+  right: 14px;
+  top: 55px;
+  width: 110px;
+  z-index: 20;
+  background: #454545;
+  color: var(--c-text-secondary);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 2.5;
+}
+
+.profile-menu div {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  transition: background-color var(--t-fast), transform var(--t-fast);
+}
+
+.profile-menu div:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  transform: translateX(3px);
+}
+
+.small-icon-img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* =========================
+   左側斜角 tabs
+========================= */
+
+.left-tabs {
+  position: absolute;
+  left: 0;
+  top: 155px;
+  width: 48px;
+  z-index: 9;
+}
+
+.tab-piece {
+  width: 48px;
+  height: 31px;
+  background: #303030;
+  border: 1px solid var(--c-bg-darkest);
+  clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
+  margin-bottom: 1px;
+}
+
+/* =========================
+   主面板與面板頂部
+========================= */
+
+.main-panel {
+  position: absolute;
+  left: 67px;
+  top: 91px;
+  width: 74%;
+  height: 448px;
+  background: var(--c-bg-panel);
+  border: 5px solid var(--c-bg-dark);
+  border-radius: var(--r-lg);
+  z-index: 5;
+  overflow: hidden;
+}
+
+.panel-head {
+  height: 43px;
+  background: var(--c-bg-dark);
+  padding: 13px 28px;
+  display: flex;
+  align-items: center;
+}
+
+.inner-search {
+  width: 320px;
+  height: 13px;
+  background: var(--c-bg-page);
+  border-radius: var(--r-pill);
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  overflow: hidden;
+}
+
+.inner-search .small-icon-img {
+  width: 14px;
+  height: 14px;
+}
+
+/* =========================
+   右側：通知 + 暗色區塊
+========================= */
+
+.right-side {
+  position: absolute;
+  right: 8px;
+  top: 173px;
+  width: 176px;
+  height: 366px;
+  z-index: 5;
+}
+
+.notice-box {
+  height: 178px;
+  background: var(--c-bg-light);
+  border: 4px solid #3b3b3b;
+  border-radius: 9px;
+  color: var(--c-text-on-light);
+  font-size: var(--fs-3xl);
+  font-weight: 900;
+  padding: 15px;
+  margin-bottom: 4px;
+}
+
+.right-dark-box {
+  height: 184px;
+  background: var(--c-bg-mid);
+  border: 4px solid #3b3b3b;
+  border-radius: var(--r-md);
+}
+
+/* =========================
+   按鈕系統：.btn-pill + 顏色 modifier
+========================= */
+
+.btn-pill {
+  min-width: 92px;
+  height: 30px;
+  border-radius: var(--r-pill);
+  background: #d6d6d6;
+  color: var(--c-bg-page);
+  font-size: 15px;
+  font-weight: 800;
+  border: 7px solid #666;
+  line-height: 16px;
+  padding: 0 var(--s-3);
+  transition:
+    background-color var(--t-fast),
+    border-color var(--t-fast),
+    transform var(--t-fast),
+    filter var(--t-fast);
+}
+
+.btn-pill:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+}
+
+.btn-pill:active {
+  transform: translateY(1px) scale(0.97);
+  filter: brightness(0.9);
+}
+
+.btn-green {
+  border-color: var(--c-success);
+}
+
+.btn-green:hover {
+  background-color: var(--c-success-hover);
+  border-color: #158f13;
+}
+
+.btn-red {
+  border-color: var(--c-danger);
+}
+
+.btn-red:hover {
+  background-color: var(--c-danger-hover);
+  border-color: #b40000;
+}
+
+/* =========================
+   頁面工具列（右上 toolbar）
+========================= */
+
+.page-toolbar {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  z-index: 20;
+  display: flex;
+  gap: 10px;
+}
+
+/* =========================
+   表單元素
+========================= */
+
+input {
+  transition:
+    background-color var(--t-fast),
+    color var(--t-fast),
+    box-shadow var(--t-fast);
+}
+
+/* 點擊輸入框時反白：淺灰底深字 */
+/* 列出所有 input 容器 selector 以提高特異度，蓋掉頁面層級的背景設定 */
+input:focus,
+.field input:focus,
+.login-field input:focus,
+.top-search input:focus,
+.inner-search input:focus {
+  outline: none;
+  background-color: #d6d6d6;
+  color: var(--c-text-on-light);
+}
+
+.field {
+  margin-bottom: 18px;
+  color: var(--c-text-muted);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.field input {
+  width: 100%;
+  height: 30px;
+  border: none;
+  border-radius: var(--r-pill);
+  background: var(--c-bg-input);
+  color: var(--c-text-primary);
+  padding: 0 var(--s-3);
+  font-size: 17px;
+  margin-top: 6px;
+}
+
+/* =========================
+   表格
+========================= */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--c-text-on-light);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+th {
+  background: #d7d7d7;
+  text-align: left;
+  font-size: 14px;
+  padding: 4px 25px;
+  height: 24px;
+}
+
+td {
+  background: var(--c-bg-row);
+  border-bottom: 4px solid #474747;
+  padding: 5px 25px;
+  color: var(--c-text-on-light);
+  height: 34px;
+}
+
+tbody tr {
+  cursor: pointer;
+  transition: background-color var(--t-fast);
+}
+
+tbody tr:hover td {
+  background-color: rgba(180, 180, 180, 0.45);
+}
+
+tbody tr.selected td {
+  background: var(--c-selected);
+  color: #200;
+}
+
+.info-btn {
+  float: right;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #777;
+  color: var(--c-text-secondary);
+  text-align: center;
+  line-height: 18px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: transform var(--t-fast), filter var(--t-fast);
+}
+
+.info-btn:hover {
+  filter: brightness(1.25);
+  transform: scale(1.12);
+}
+
+.empty-text {
+  height: 295px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-text-muted);
+  font-size: var(--fs-2xl);
+  font-weight: 900;
+}
+
+/* =========================
+   分頁器
+========================= */
+
+.pager {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 17px;
+  text-align: center;
+  color: var(--c-text-muted);
+  font-size: 27px;
+  font-weight: 900;
+  user-select: none;
+}
+
+.pager span {
+  cursor: pointer;
+  margin: 0 var(--s-1);
+  display: inline-block;
+  transition: color var(--t-fast), transform var(--t-fast);
+}
+
+.pager span:hover {
+  color: var(--c-text-primary);
+  transform: scale(1.15);
+}
+
+.pager span:active {
+  transform: scale(0.92);
+}
+
+/* =========================
+   Modal
+========================= */
+
+.modal-mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  width: 390px;
+  min-height: 275px;
+  background: #424242;
+  border: 2px solid var(--c-border);
+  border-radius: var(--r-md);
+  color: var(--c-text-secondary);
+  text-align: center;
+  padding: 48px 60px;
+}
+
+.modal h2 {
+  font-size: 31px;
+  margin-bottom: var(--s-3);
+}
+
+.modal p {
+  text-align: left;
+  font-size: var(--fs-md);
+  line-height: 1.45;
+  margin-bottom: var(--s-5);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+
+/* =========================
+   一般 icon 大小規格
+========================= */
+
+.menu-icon-img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   全站共用 RWD 響應式設定 (手機與小螢幕裝置)
+========================================================= */
+@media (max-width: 768px) {
+  /* 1. 釋放畫布，允許上下捲動 */
+  .canvas {
+    width: 100%;
+    height: 100dvh;
+    transform: none !important;
+    position: fixed;
+    left: 0;
+    top: 0;
+    border: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column; /* 讓內容由上往下排 */
+  }
+
+  /* 2. 隱藏不適合手機螢幕的裝飾與左側 Tabs */
+  .canvas.has-decor::before,
+  .canvas.has-decor::after,
+  .left-tabs,
+  .top-small-box {
+    display: none !important;
+  }
+
+  /* 3. 頂部列：改為自然排列 */
+  .top-logo {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border-radius: 0;
+    clip-path: none;
+    z-index: 10;
+  }
+  .top-icons {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  }
+  .top-search {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 10px 15px;
+    width: auto; /* 釋放寬度限制 */
+  }
+
+  /* 4. 主面板：釋放寬高與絕對定位 */
+  .main-panel {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    border: none;
+    border-radius: 0;
+    flex-grow: 1; /* 佔滿中間剩餘空間 */
+  }
+  .inner-search {
+    width: 100%;
+  }
+
+  /* 5. 右側資訊欄：移到最下方 */
+  .right-side {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .notice-box, .right-dark-box {
+    width: 100%;
+    height: auto;
+    min-height: 150px;
+    margin: 0;
+  }
+
+  /* ===================================================
+     以下為補充加入的共用元件 RWD 設定
+  =================================================== */
+
+  /* 6. 頁面工具列：取消絕對定位，避免在手機上與標題或搜尋框重疊 */
+  .page-toolbar {
+    position: relative;
+    right: 0;
+    top: 0;
+    padding: 10px 15px;
+    background: var(--c-bg-dark); /* 延伸頭部底色 */
+    justify-content: flex-end;
+    flex-wrap: wrap; /* 按鈕太多時自動換行 */
+  }
+
+ /* 7. 表格防爆框：鎖定最小寬度並允許橫向滑動 */
+  #userTableHost,
+  #vpnTableHost {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* 讓 iOS 滑動更順暢 */
+  }
+  table {
+    min-width: 600px; /* 確保表格不會擠成一團，螢幕太小就會出現橫向滾動條 */
+  }
+
+  /* 8. 分頁器微調：取消絕對定位，跟隨表格自然放到最下方 */
+  .pager {
+    position: relative;
+    bottom: 0;
+    padding: 15px 0;
+  }
+
+  /* 9. 彈出視窗 (Modal) 液態化：適應手機螢幕大小 */
+  .modal {
+    width: 90%;
+    max-width: 390px;
+    min-height: auto;
+    padding: 30px 20px; /* 縮小內距 */
+  }
+  .modal-actions {
+    flex-direction: column; /* 手機上按鈕改成上下排比較好點擊 */
+    gap: 12px;
+  }
+  .modal-actions button {
+    width: 100%;
+  }
+
+}

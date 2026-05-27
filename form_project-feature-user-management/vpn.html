@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+  vpn.html
+  VPN 帳號列表頁（取代舊的 indexB.html.html）。
+  視覺與其他頁面統一：同一套 top-bar / 主面板 / 按鈕。
+  API：getVpnAccounts / deleteVpnAccount
+-->
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UniAccess - VPN 帳號管理</title>
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="css/vpn.css" />
+</head>
+<body>
+
+  <section class="canvas has-decor">
+
+    <div class="top-logo"><img src="images/logo.png" class="top-logo-img" alt="UniAccess"></div>
+    <div class="top-search">
+      <img src="images/icons/search.png" class="search-icon-img" alt=""><input />
+    </div>
+    <div class="top-small-box"></div>
+    <div class="top-icons">
+      <button class="top-icon" id="homeBtn"><img src="images/icons/home.png" class="top-icon-img" alt=""></button>
+      <button class="top-icon" id="profileBtn"><img src="images/icons/user.png" class="top-icon-img" alt=""></button>
+    </div>
+    <div id="profileMenu" class="profile-menu hidden">
+      <div><img src="images/icons/settings.png" class="small-icon-img" alt=""> 設定</div>
+      <div id="logoutMenuBtn"><img src="images/icons/logout.png" class="small-icon-img" alt=""> 登出</div>
+      <div><img src="images/icons/question.png" class="small-icon-img" alt=""> 問題與回報</div>
+    </div>
+
+    <div class="left-tabs">
+      <div class="tab-piece"></div><div class="tab-piece"></div><div class="tab-piece"></div>
+      <div class="tab-piece"></div><div class="tab-piece"></div><div class="tab-piece"></div>
+      <div class="tab-piece"></div><div class="tab-piece"></div><div class="tab-piece"></div>
+      <div class="tab-piece"></div><div class="tab-piece"></div>
+    </div>
+
+    <main class="main-panel">
+      <div class="page-toolbar">
+        <button id="backBtn"   class="btn-pill">返回</button>
+        <button id="addBtn"    class="btn-pill btn-green">☁ 新增</button>
+        <button id="revokeBtn" class="btn-pill btn-red">☁ 撤銷</button>
+      </div>
+
+      <div class="panel-head">
+        <div class="inner-search">
+          <img src="images/icons/search.png" class="small-icon-img" alt="">
+        </div>
+      </div>
+
+      <div id="vpnTableHost"></div>
+
+      <div class="pager">
+        <span id="prevPage">◀◀</span>
+        <span id="pagerLabel">第1筆 / 共1筆</span>
+        <span id="nextPage">▶▶</span>
+      </div>
+    </main>
+
+    <aside class="right-side">
+      <div class="notice-box">通知</div>
+      <div class="right-dark-box"></div>
+    </aside>
+
+  </section>
+
+  <div id="confirmModal" class="modal-mask hidden">
+    <div class="modal">
+      <h2 id="confirmTitle"></h2>
+      <p id="confirmText"></p>
+      <div class="modal-actions">
+        <button id="yesBtn" class="btn-pill btn-green">是</button>
+        <button id="noBtn"  class="btn-pill btn-red">否</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/pages/vpn.js"></script>
+</body>
+</html>

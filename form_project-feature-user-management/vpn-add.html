@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+  vpn-add.html
+  新增 VPN 帳號頁。
+  API：createVpnAccount (送出時)
+-->
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UniAccess - 新增 VPN 帳號</title>
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="css/vpn.css" />
+  <link rel="stylesheet" href="css/users.css" />
+</head>
+<body>
+
+  <section class="canvas has-decor">
+
+    <div class="top-logo"><img src="images/logo.png" class="top-logo-img" alt="UniAccess"></div>
+    <div class="top-search">
+      <img src="images/icons/search.png" class="search-icon-img" alt=""><input />
+    </div>
+    <div class="top-small-box"></div>
+    <div class="top-icons">
+      <button class="top-icon" id="homeBtn"><img src="images/icons/home.png" class="top-icon-img" alt=""></button>
+      <button class="top-icon" id="profileBtn"><img src="images/icons/user.png" class="top-icon-img" alt=""></button>
+    </div>
+    <div id="profileMenu" class="profile-menu hidden">
+      <div><img src="images/icons/settings.png" class="small-icon-img" alt=""> 設定</div>
+      <div id="logoutMenuBtn"><img src="images/icons/logout.png" class="small-icon-img" alt=""> 登出</div>
+      <div><img src="images/icons/question.png" class="small-icon-img" alt=""> 問題與回報</div>
+    </div>
+
+    <div class="left-tabs">
+      <div class="tab-piece"></div><div class="tab-piece"></div><div class="tab-piece"></div>
+      <div class="tab-piece"></div><div class="tab-piece"></div><div class="tab-piece"></div>
+      <div class="tab-piece"></div><div class="tab-piece"></div><div class="tab-piece"></div>
+      <div class="tab-piece"></div><div class="tab-piece"></div>
+    </div>
+
+    <main class="main-panel">
+      <div class="page-toolbar">
+        <button id="backBtn"   class="btn-pill">返回</button>
+        <button id="submitBtn" class="btn-pill btn-green">確認新增</button>
+      </div>
+
+      <div class="form-title">新增VPN帳號</div>
+
+      <div class="form-wrap">
+        <div class="vpn-form-grid">
+          <div class="field">使用者帳號名稱：<input id="inUser" /></div>
+          <div class="field">VPN帳號名稱：<input id="inName" /></div>
+          <div class="field">VLANID：<input id="inVlan" /></div>
+        </div>
+      </div>
+    </main>
+
+    <aside class="right-side">
+      <div class="notice-box">通知</div>
+      <div class="right-dark-box"></div>
+    </aside>
+
+  </section>
+
+  <div id="confirmModal" class="modal-mask hidden">
+    <div class="modal">
+      <h2 id="confirmTitle"></h2>
+      <p id="confirmText"></p>
+      <div class="modal-actions">
+        <button id="yesBtn" class="btn-pill btn-green">是</button>
+        <button id="noBtn"  class="btn-pill btn-red">否</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/pages/vpn-add.js"></script>
+</body>
+</html>
